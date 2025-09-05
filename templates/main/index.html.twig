@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main>
+        <header >
+            <div class="entete">
+                <h2> Bienvenue sur votre site de cinéphiles !!</h2>
+                <p>
+                    Plongez au cœur du 7ᵉ art : critiques, résumés, analyses et coups de cœur autour des plus grands classiques comme des nouveautés. Ici, le cinéma se vit, se partage et se redécouvre à travers toutes ses émotions.
+                </p>
+            </div>
+        </header>
+        <section class="classique">
+            <article>
+                <h3>Les classiques :</h3>
+                <h3>Films :</h3>
+                {% for classique in Classiques %}
+                    <h3> Titre : {{ classique.nom }}</h3>
+                    <h4> Réalisateur : {{ classique.realisateurs }}</h4>
+                    <p> Affiche : {{ classique.affiche}}</p>
+                    <p> Description : {{ classique.description }}</p>
+                    <p> Date de sortie : {{ classique.datedesortie|date('d/m/Y')}}</p>
+                    <p> Genre : {{ classique.genre}}</p>
+                    <p> Durée : {{ classique.duree}} min</p>
+                {% endfor %}
+            </article>
+        </section>
+    </main>
+{% endblock %}

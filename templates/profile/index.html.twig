@@ -1,0 +1,99 @@
+{#{% extends 'base.html.twig' %}#}
+<style>
+    .content { max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    header {
+        margin: 1em auto; font: 18px/1.5 sans-serif;
+    }
+    body{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: #1F1F3B;
+        color: white;
+    }
+    img{
+        width: 100px;
+        height: 100px;
+    }
+    .series, .films{
+        margin: 1em auto; font: 18px/1.5 sans-serif;
+    }
+    nav , footer {
+        background-color: gainsboro;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    nav ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    nav li , a{
+        list-style: none;
+        color: #E50914;
+        text-decoration: none;
+        padding:  0 10px;
+    }
+</style>
+
+{% block body %}
+    <header>
+        <nav>
+            <a href="{{ path('app_profile') }}"><img src="{{ asset('assets/images/logo.png') }}" alt="logo site"></a>
+            <ul>
+                <li><a href="#">Mon compte</a></li>
+                <li><a href="{{ path('app_contacts') }}">Contact</a></li>
+                <li><a href="{{ path('app_logout') }}">Deconnexion</a></li>
+            </ul>
+        </nav>
+    </header>
+<div class="content">
+        <main>
+            <header >
+                <h2> Bienvenue {{ app.user.nom }} {{ app.user.prenom }}</h2>
+                <div class="entete">
+                    <p> Vous voulez ajouter : </p>
+                    <a href="{{ path('app_films_ajout') }}"> Un film ? </a>
+                    <a href="{{ path('app_series_ajout') }}"> Une serie ? </a>
+                </div>
+                    <input type="search" id="site-search" name="q" /> <button>Rechercher </button>
+            </header>
+
+            <section class="films">
+                <h3>Series :</h3>
+                <p>
+                    Plongez dans l’univers des séries : suspens haletant, comédies irrésistibles, drames intenses ou aventures fantastiques. Découvrez les dernières nouveautés, les classiques incontournables et laissez-vous captiver épisode après épisode.
+                </p>
+                <article>
+                    {% for serie in series %}
+                        <h3> Titre : {{ serie.titre }}</h3>
+                        <h4> Réalisateur : {{ serie.realisateurs }}</h4>
+                        <p> Affiche : {{ serie.affiche}}</p>
+                        <p> Description : {{ serie.description }}</p>
+                        <p> Date de sortie : {{ serie.datedesortie|date('d/m/Y')}}</p>
+                        <p> Genre : {{ serie.genre}}</p>
+                        <p> Durée : {{ serie.duree}} min par episode </p>
+                    {% endfor %}
+                </article>
+            </section>
+
+            <section class="series">
+                <h3>Films :</h3>
+                <p>
+                    Découvrez notre collection de films pour tous les goûts : classiques incontournables, nouveautés captivantes et pépites méconnues. Parcourez, explorez et laissez-vous inspirer par des histoires qui vous feront rire, pleurer, frissonner ou rêver.
+                </p>
+                <article>
+                    {% for film in films %}
+                        <h3> Titre : {{ film.titre }}</h3>
+                        <h4> Réalisateur : {{ film.realisateurs }}</h4>
+                        <p> Affiche : {{ film.affiche}}</p>
+                        <p> Description : {{ film.description }}</p>
+                        <p> Date de sortie : {{ film.datedesortie|date('d/m/Y')}}</p>
+                        <p> Genre : {{ film.genre}}</p>
+                        <p> Durée : {{ film.duree}} min</p>
+                    {% endfor %}
+                </article>
+            </section>
+        </main>
+</div>
+{% endblock %}

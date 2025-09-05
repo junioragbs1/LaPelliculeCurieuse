@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contacts{% endblock %}
+{% block body %}
+
+    <h2>Contactez-nous</h2>
+    <p>Pour toute question ou suggestion, n'hésitez pas à nous contacter :</p>
+
+    <section class="contact">
+        <div class="infoscontacts">
+            <h3>Informations de contact :</h3>
+            <p>Email : contact@example.com</p>
+            <p>Téléphone : +33 1 23 45 67 89</p>
+        </div>
+        <div class="reseaux">
+            <details>
+                <summary><h3>Réseaux</h3></summary>
+                <ul>
+                    <li><a href=""><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a href=""><i class="fa-brands fa-x-twitter"></i> Twitter</a></li>
+                    <li><a href=""><i class="fa-brands fa-youtube"></i> Youtube</a></li>
+                </ul>
+            </details>
+        </div>
+    </section>
+    {% endblock %}
