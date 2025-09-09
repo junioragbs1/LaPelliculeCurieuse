@@ -38,14 +38,14 @@ class Films
      * @var Collection<int, Avis>
      */
     #[ORM\OneToMany(targetEntity: Avis::class, mappedBy: 'id_film')]
-    private Collection $film_avis;
+    private Collection $filmAvis;
 
     #[ORM\Column(length: 155)]
     private ?string $realisateurs = null;
 
     public function __construct()
     {
-        $this->film_avis = new ArrayCollection();
+        $this->filmAvis = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -129,13 +129,13 @@ class Films
      */
     public function getFilmAvis(): Collection
     {
-        return $this->film_avis;
+        return $this->filmAvis;
     }
 
     public function addFilmAvi(Avis $filmAvi): static
     {
-        if (!$this->film_avis->contains($filmAvi)) {
-            $this->film_avis->add($filmAvi);
+        if (!$this->filmAvis->contains($filmAvi)) {
+            $this->filmAvis->add($filmAvi);
             $filmAvi->setIdFilm($this);
         }
 
@@ -144,7 +144,7 @@ class Films
 
     public function removeFilmAvi(Avis $filmAvi): static
     {
-        if ($this->film_avis->removeElement($filmAvi)) {
+        if ($this->filmAvis->removeElement($filmAvi)) {
             // set the owning side to null (unless already changed)
             if ($filmAvi->getIdFilm() === $this) {
                 $filmAvi->setIdFilm(null);

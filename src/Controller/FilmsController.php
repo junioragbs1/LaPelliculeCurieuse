@@ -14,10 +14,11 @@ use Symfony\Component\Routing\Attribute\Route;
 final class FilmsController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(Films $films): Response
     {
         return $this->render('films/index.html.twig', [
             'controller_name' => 'FilmsController',
+            'note' => $films->getFilmAvis()
         ]);
     }
 

@@ -24,7 +24,7 @@ class Avis
     private ?Series $id_serie = null;
 
     #[ORM\ManyToOne(inversedBy: 'film_avis')]
-    #[ORM\JoinColumn(nullable: false)]
+//    #[ORM\JoinColumn(nullable: false)]
     private ?films $id_film = null;
 
     public function getId(): ?int

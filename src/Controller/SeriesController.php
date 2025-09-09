@@ -14,10 +14,11 @@ use Symfony\Component\Routing\Attribute\Route;
 final class SeriesController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(Series $series): Response
     {
         return $this->render('series/index.html.twig', [
             'controller_name' => 'SeriesController',
+            'note' => $series->getSerieAvis()
         ]);
     }
 

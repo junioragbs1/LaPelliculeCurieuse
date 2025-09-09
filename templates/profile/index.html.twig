@@ -34,6 +34,9 @@
         text-decoration: none;
         padding:  0 10px;
     }
+    h2{
+        color: #E50914;
+    }
 </style>
 
 {% block body %}
@@ -60,7 +63,7 @@
             </header>
 
             <section class="films">
-                <h3>Series :</h3>
+                <h2>Series :</h2>
                 <p>
                     Plongez dans l’univers des séries : suspens haletant, comédies irrésistibles, drames intenses ou aventures fantastiques. Découvrez les dernières nouveautés, les classiques incontournables et laissez-vous captiver épisode après épisode.
                 </p>
@@ -73,12 +76,22 @@
                         <p> Date de sortie : {{ serie.datedesortie|date('d/m/Y')}}</p>
                         <p> Genre : {{ serie.genre}}</p>
                         <p> Durée : {{ serie.duree}} min par episode </p>
+                        <a href="{{ path('app_contacts_ajout') }}">Ajouter un avis</a>
+
+                        <p>Avis :</p>
+                        <ul>
+                            {% for avis in serie.serieAvis %}
+                                <li>Note : {{ avis.note }} par {{ avis.idUtilisateur.nom }}</li>
+                            {% else %}
+                                <li>Aucun avis pour cette serie.</li>
+                            {% endfor %}
+                        </ul>
                     {% endfor %}
                 </article>
             </section>
 
             <section class="series">
-                <h3>Films :</h3>
+                <h2>Films :</h2>
                 <p>
                     Découvrez notre collection de films pour tous les goûts : classiques incontournables, nouveautés captivantes et pépites méconnues. Parcourez, explorez et laissez-vous inspirer par des histoires qui vous feront rire, pleurer, frissonner ou rêver.
                 </p>
@@ -86,11 +99,20 @@
                     {% for film in films %}
                         <h3> Titre : {{ film.titre }}</h3>
                         <h4> Réalisateur : {{ film.realisateurs }}</h4>
-                        <p> Affiche : {{ film.affiche}}</p>
                         <p> Description : {{ film.description }}</p>
                         <p> Date de sortie : {{ film.datedesortie|date('d/m/Y')}}</p>
                         <p> Genre : {{ film.genre}}</p>
                         <p> Durée : {{ film.duree}} min</p>
+                        <a href="{{ path('app_contacts_ajout') }}">Ajouter un avis</a>
+
+                        <p>Avis :</p>
+                        <ul>
+                            {% for avis in film.filmAvis %}
+                                <li>Note : {{ avis.note }} par {{ avis.idUtilisateur.nom }}</li>
+                            {% else %}
+                                <li>Aucun avis pour ce film.</li>
+                            {% endfor %}
+                        </ul>
                     {% endfor %}
                 </article>
             </section>

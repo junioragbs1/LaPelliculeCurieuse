@@ -38,14 +38,14 @@ class Series
      * @var Collection<int, Avis>
      */
     #[ORM\OneToMany(targetEntity: Avis::class, mappedBy: 'id_serie')]
-    private Collection $serie_avis;
+    private Collection $serieAvis;
 
     #[ORM\Column(length: 100)]
     private ?string $realisateurs = null;
 
     public function __construct()
     {
-        $this->serie_avis = new ArrayCollection();
+        $this->serieAvis = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -130,13 +130,13 @@ class Series
      */
     public function getSerieAvis(): Collection
     {
-        return $this->serie_avis;
+        return $this->serieAvis;
     }
 
     public function addSerieAvi(Avis $serieAvi): static
     {
-        if (!$this->serie_avis->contains($serieAvi)) {
-            $this->serie_avis->add($serieAvi);
+        if (!$this->serieAvis->contains($serieAvi)) {
+            $this->serieAvis->add($serieAvi);
             $serieAvi->setIdSerie($this);
         }
 
@@ -145,7 +145,7 @@ class Series
 
     public function removeSerieAvi(Avis $serieAvi): static
     {
-        if ($this->serie_avis->removeElement($serieAvi)) {
+        if ($this->serieAvis->removeElement($serieAvi)) {
             // set the owning side to null (unless already changed)
             if ($serieAvi->getIdSerie() === $this) {
                 $serieAvi->setIdSerie(null);
