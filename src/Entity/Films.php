@@ -25,7 +25,7 @@ class Films
     #[ORM\Column]
     private ?int $duree = null;
 
-    #[ORM\Column(length: 200)]
+    #[ORM\Column(length: 200 , nullable: true)]
     private ?string $affiche = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]

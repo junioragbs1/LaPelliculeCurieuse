@@ -19,11 +19,13 @@ class AjoutAvisFormType extends AbstractType
             ->add('note')
             ->add('id_serie', EntityType::class, [
                 'class' => Series::class,
-                'choice_label' => 'id',
+                'choice_label' => 'titre',
+                'required' => false,
             ])
             ->add('id_film', EntityType::class, [
                 'class' => films::class,
-                'choice_label' => 'id',
+                'choice_label' => 'titre',
+                'required' => false,
             ])
         ;
     }

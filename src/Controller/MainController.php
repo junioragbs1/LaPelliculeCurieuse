@@ -28,7 +28,7 @@ final class MainController extends AbstractController
     {
         return $this->render('main/mentions.html.twig');
     }
-    #[Route('/contacts', name: 'app_contacts')]
+    #[Route('/ajoutmsg', name: 'app_contacts')]
 public function contact(Request $request): Response
     {
         return $this->render('main/contacts.html.twig');

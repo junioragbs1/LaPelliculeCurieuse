@@ -25,7 +25,7 @@ class Series
     #[ORM\Column(length: 255)]
     private ?string $genre = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255 , nullable: true)]
     private ?string $affiche = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]

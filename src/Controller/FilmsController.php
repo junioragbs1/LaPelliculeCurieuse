@@ -43,7 +43,6 @@ final class FilmsController extends AbstractController
             $em->persist($film);
             $em->flush(); // pour ecrire dans la base
 
-            $this->addFlash('success' , 'le film a ete ajouter' );
         return $this->redirectToRoute('app_profile');
         }
 

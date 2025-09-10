@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\AvisRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -15,12 +16,13 @@ final class ProfileController extends AbstractController
 {
     #[Route('/profile', name: 'app_profile')]
     #[IsGranted('ROLE_USER')]
-    public function index(FilmsRepository $filmsRepository , SeriesRepository $seriesRepository): Response
+    public function index(FilmsRepository $filmsRepository , SeriesRepository $seriesRepository , AvisRepository $avisRepository): Response
     {
         return $this->render('profile/index.html.twig',
             [
                 'films' => $filmsRepository->findAll(),
                 'series' => $seriesRepository->findAll(),
+                'id_serie_id' => $seriesRepository->findAll()[0]->getId(),
             ]);
     }
 }

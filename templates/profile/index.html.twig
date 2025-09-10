@@ -44,9 +44,9 @@
         <nav>
             <a href="{{ path('app_profile') }}"><img src="{{ asset('assets/images/logo.png') }}" alt="logo site"></a>
             <ul>
-                <li><a href="#">Mon compte</a></li>
+                <li><a href="#"> Compte </a></li>
                 <li><a href="{{ path('app_contacts') }}">Contact</a></li>
-                <li><a href="{{ path('app_logout') }}">Deconnexion</a></li>
+                <li><a href="{{ path('app_logout') }}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Deconnexion</a></li>
             </ul>
         </nav>
     </header>
@@ -71,7 +71,6 @@
                     {% for serie in series %}
                         <h3> Titre : {{ serie.titre }}</h3>
                         <h4> Réalisateur : {{ serie.realisateurs }}</h4>
-                        <p> Affiche : {{ serie.affiche}}</p>
                         <p> Description : {{ serie.description }}</p>
                         <p> Date de sortie : {{ serie.datedesortie|date('d/m/Y')}}</p>
                         <p> Genre : {{ serie.genre}}</p>
@@ -104,7 +103,6 @@
                         <p> Genre : {{ film.genre}}</p>
                         <p> Durée : {{ film.duree}} min</p>
                         <a href="{{ path('app_contacts_ajout') }}">Ajouter un avis</a>
-
                         <p>Avis :</p>
                         <ul>
                             {% for avis in film.filmAvis %}
@@ -118,4 +116,7 @@
             </section>
         </main>
 </div>
+    {% block javascripts %}
+        <script src="https://kit.fontawesome.com/9dafe03bf9.js" crossorigin="anonymous"></script>
+    {% endblock %}
 {% endblock %}

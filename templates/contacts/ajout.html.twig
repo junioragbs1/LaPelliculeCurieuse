@@ -1,5 +1,42 @@
-{% extends 'base.html.twig' %}
+<style>
+    .content { max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    header {
+        margin: 1em auto; font: 18px/1.5 sans-serif;
+    }
+    body{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: #1F1F3B;
+        color: white;
+    }
+    img{
+        width: 100px;
+        height: 100px;
+    }
+    .series, .films{
+        margin: 1em auto; font: 18px/1.5 sans-serif;
+    }
+    nav , footer {
+        background-color: gainsboro;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    nav ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
+    }
+    nav li , a{
+        list-style: none;
+        color: #E50914;
+        text-decoration: none;
+        padding:  0 10px;
+    }
+    h2{
+        color: #E50914;
+    }
+</style>
 {% block title %}Ajouter un avis!{% endblock %}
 
 {% block body %}

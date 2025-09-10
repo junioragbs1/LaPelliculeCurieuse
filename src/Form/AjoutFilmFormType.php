@@ -15,7 +15,7 @@ class AjoutFilmFormType extends AbstractType
             ->add('titre')
             ->add('description')
             ->add('duree')
-            ->add('affiche')
+//            ->add('affiche')
             ->add('dateDeSortie')
             ->add('genre')
             ->add('realisateurs')

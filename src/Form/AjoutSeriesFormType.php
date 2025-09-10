@@ -15,7 +15,7 @@ class AjoutSeriesFormType extends AbstractType
             ->add('titre')
             ->add('description')
             ->add('genre')
-            ->add('affiche')
+//            ->add('affiche')
             ->add('dateDeSortie')
             ->add('duree')
             ->add('realisateurs')
