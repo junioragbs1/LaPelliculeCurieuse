@@ -22,16 +22,16 @@ final class MainController extends AbstractController
             'Classiques' => $classiquesRepository->findAll(),
         ]);
     }
-
-    #[Route('/mentions-legales', name: 'app_mentions')]
-    public function mentions(): Response
-    {
-        return $this->render('main/mentions.html.twig');
-    }
     #[Route('/ajoutmsg', name: 'app_contacts')]
 public function contact(Request $request): Response
     {
         return $this->render('main/contacts.html.twig');
     }
+    #[Route('/mentions-legales', name: 'app_mentions')]
+    public function mentions(): Response
+    {
+        return $this->render('main/mentions.html.twig');
+    }
+
 }
 

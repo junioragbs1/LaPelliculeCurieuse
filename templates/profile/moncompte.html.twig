@@ -1,0 +1,36 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+{% endblock %}
+{% block body %}
+
+    <main>
+        <header>
+            <nav>
+                <a href="{{ path('app_profile') }}"><img src="{{ asset('assets/images/logo.png') }}" alt="logo site"></a>
+                <ul>
+                    <li><a href="{{ path('app_contacts') }}">Contact</a></li>
+                    <li><a href="{{ path('app_mon_compte') }}">Mon compte</a></li>
+                    <li><a href="{{ path('app_logout') }}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Deconnexion</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="main_header">
+            <h2> Mon compte :</h2>
+            <p>
+                Plongez au cœur du 7ᵉ art : critiques, résumés, analyses et coups de cœur autour des plus grands classiques comme des nouveautés. Ici, le cinéma se vit, se partage et se redécouvre à travers toutes ses émotions.
+            </p>
+        </div>
+
+        <section class="infos">
+            {% for user in users %}
+                {% if user.id == app.user.id %}
+{#                    je compare de l'id actuel a celui de l'utilisateur connecter, si c'est vrai. Il l'affiche#}
+                    <h3> Nom : {{ user.nom }}  </h3>
+                    <p> Prénom : {{ user.prenom }}</p>
+                    <p> Email : {{ user.email}}</p>
+                    <p> Date d'inscription : {{ user.dateinscription|date('d/m/Y')}}</p>
+                {% endif %}
+            {% endfor %}
+        </section>
+    </main>
+{% endblock %}

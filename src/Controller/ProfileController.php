@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Users;
 use App\Repository\AvisRepository;
+use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -24,5 +26,13 @@ final class ProfileController extends AbstractController
                 'series' => $seriesRepository->findAll(),
                 'id_serie_id' => $seriesRepository->findAll()[0]->getId(),
             ]);
+    }
+    #[Route('/mon_compte', name: 'app_mon_compte')]
+    public function moncompte(UsersRepository $usersRepository): Response
+    {
+        return $this->render('profile/moncompte.html.twig' ,
+        [
+            'users' => $usersRepository->findAll(),
+        ]);
     }
 }
