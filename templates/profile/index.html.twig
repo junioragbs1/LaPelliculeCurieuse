@@ -15,7 +15,7 @@
     </header>
 <div class="content">
         <main>
-            <header >
+            <div class="profile">
                 <h2> Bienvenue {{ app.user.nom }} {{ app.user.prenom }}</h2>
                 <div class="entete">
                     <p> Vous voulez ajouter : </p>
@@ -23,57 +23,72 @@
                     <a href="{{ path('app_series_ajout') }}"> Une serie ? </a>
                 </div>
                     <input type="search" id="site-search" name="q" /> <button>Rechercher </button>
-            </header>
+            </div>
 
-            <section class="films">
+            <section>
                 <h2>Series :</h2>
                 <p>
                     Plongez dans l’univers des séries : suspens haletant, comédies irrésistibles, drames intenses ou aventures fantastiques. Découvrez les dernières nouveautés, les classiques incontournables et laissez-vous captiver épisode après épisode.
                 </p>
-                <article>
-                    {% for serie in series %}
-                        <h3> Titre : {{ serie.titre }} par {{ serie.realisateurs }} </h3>
-                        <p> Description : {{ serie.description }}</p>
-                        <p> Date de sortie : {{ serie.datedesortie|date('d/m/Y')}}</p>
-                        <p> Genre : {{ serie.genre}}</p>
-                        <p> Durée : {{ serie.duree}} min par episode </p>
-                        <p> Ajoutez par <small> {{ app.user.prenom }} {{ app.user.nom }}</small></p>
-                        <p>Avis :</p>
-                        <ul>
-                            {% for avis in serie.serieAvis %}
-                                <li>Note : {{ avis.note }} par {{ avis.idUtilisateur.nom }}</li>
-                            {% else %}
-                                <li>Aucun avis pour cette serie.</li>
-                            {% endfor %}
-                        </ul>
-                        <a href="{{ path('app_contacts_ajout') }}">Ajouter un avis</a>
-                    {% endfor %}
+                <article class="series">
+                    <article class="series">
+                        {% for serie in series %}
+                            <div class="serie-card">
+                                <h3> {{ serie.titre }} par {{ serie.realisateurs }} </h3>
+                                 <img src="{{ asset('assets/images/LPC.png') }}" alt="logo film" class="serie-img">
+                                <p><strong>Description :</strong> {{ serie.description }}</p>
+                                <p><strong>Date de sortie :</strong> {{ serie.datedesortie|date('d/m/Y') }}</p>
+                                <p><strong>Genre :</strong> {{ serie.genre }}</p>
+                                <p><strong>Durée :</strong> {{ serie.duree }} min par épisode</p>
+                                <p><strong>Ajouté par :</strong> <small>{{ app.user.prenom }} {{ app.user.nom }}</small></p>
+
+                                <p><strong>Avis :</strong></p>
+                                <ul>
+                                    {% for avis in serie.serieAvis %}
+                                        <li>Note : {{ avis.note }} par {{ avis.idUtilisateur.nom }}</li>
+                                    {% else %}
+                                        <li>Aucun avis pour cette série.</li>
+                                    {% endfor %}
+                                </ul>
+                                <a href="{{ path('app_contacts_ajout') }}" class="btn-avis">Ajouter un avis</a>
+                            </div>
+                        {% endfor %}
+                    </article>
+
                 </article>
             </section>
 
-            <section class="series">
+            <section>
                 <h2>Films :</h2>
                 <p>
                     Découvrez notre collection de films pour tous les goûts : classiques incontournables, nouveautés captivantes et pépites méconnues. Parcourez, explorez et laissez-vous inspirer par des histoires qui vous feront rire, pleurer, frissonner ou rêver.
                 </p>
-                <article>
-                    {% for film in films %}
-                        <h3> Titre : {{ film.titre }} par {{ film.realisateurs }}</h3>
-                        <p> Description : {{ film.description }}</p>
-                        <p> Date de sortie : {{ film.datedesortie|date('d/m/Y')}}</p>
-                        <p> Genre : {{ film.genre}}</p>
-                        <p> Durée : {{ film.duree}} min</p>
-                        <p> Ajoutez par <small> {{ app.user.prenom }} {{ app.user.nom }}</small></p>
-                        <p>Avis :</p>
-                        <ul>
-                            {% for avis in film.filmAvis %}
-                                <li>Note : {{ avis.note }} par {{ avis.idUtilisateur.nom }}</li>
-                            {% else %}
-                                <li>Aucun avis pour ce film.</li>
-                            {% endfor %}
-                        </ul>
-                        <a href="{{ path('app_contacts_ajout') }}">Ajouter un avis</a>
-                    {% endfor %}
+                <article class="films">
+                    <article class="films">
+                        {% for film in films %}
+                            <div class="film-card">
+                                <h3>{{ film.titre }} par {{ film.realisateurs }}</h3>
+                                <img src="{{ asset('assets/images/Pulp_Fiction .jpg') }}" alt="logo film" class="film-img">
+
+                                <p><strong>Description :</strong> {{ film.description }}</p>
+                                <p><strong>Date de sortie :</strong> {{ film.datedesortie|date('d/m/Y') }}</p>
+                                <p><strong>Genre :</strong> {{ film.genre }}</p>
+                                <p><strong>Durée :</strong> {{ film.duree }} min</p>
+                                <p><strong>Ajouté par :</strong> <small>{{ app.user.prenom }} {{ app.user.nom }}</small></p>
+
+                                <p><strong>Avis :</strong></p>
+                                <ul>
+                                    {% for avis in film.filmAvis %}
+                                        <li>Note : {{ avis.note }} par {{ avis.idUtilisateur.nom }}</li>
+                                    {% else %}
+                                        <li>Aucun avis pour ce film.</li>
+                                    {% endfor %}
+                                </ul>
+                                <a href="{{ path('app_contacts_ajout') }}" class="btn-avis">Ajouter un avis</a>
+                            </div>
+                        {% endfor %}
+                    </article>
+
                 </article>
             </section>
         </main>

@@ -26,13 +26,13 @@ final class SeriesController extends AbstractController
     #[Route('/ajouter', name: 'ajout')]
     public function ajouterSerie(Request $request, EntityManagerInterface $em): Response
     {
-        // je initilialise une  film vide
+        // je initilialise une série vide
         $serie = new Series();
 
         // j'initialise le formulaire . le lie a mon controller
         $serieform = $this->createForm(AjoutSeriesFormType::class, $serie);
 
-        //on va reqcuperer la reqiette dans les paramettre . on traite le formulaire .
+        //on va récupérer la reqiette dans les paramettre . on traite le formulaire .
         $serieform->handleRequest($request);
 
         // je verifier s'il est envoyer et valide
