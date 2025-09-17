@@ -2,23 +2,23 @@
     <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
 {% endblock %}
 
-{% block title %}Donnez une note ✅{% endblock %}
+{% block title %} <title> Donnez une note ✅</title>{% endblock %}
 
 {% block body %}
-    <style>
-        .example-wrapper { margin: auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    </style>
 
     <div class="example-wrapper">
         <p> Choisissez un Film ou une Série :</p>
 
-        {# Formulaire #}
-
         {{ form_start(form) }}
-
-        {{ form_row(form.note, { 'label': 'Votre note : ' }) }}
-        {{ form_row(form.id_film, { 'label': 'Choisissez un film : ' }) }}
-        {{ form_row(form.id_serie, { 'label': 'Choisissez une série : ' }) }}
+        <div class="input">
+            {{ form_row(form.note, { 'label': 'Votre note : ' }) }}
+        </div>
+        <div class="input">
+            {{ form_row(form.id_film, { 'label': 'Choisissez un film : ' }) }}
+        </div>
+        <div class="input">
+            {{ form_row(form.id_serie, { 'label': 'Choisissez une série : ' }) }}
+        </div>
 
         <button type="submit">Ajouter</button>
 

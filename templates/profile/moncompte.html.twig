@@ -4,17 +4,6 @@
 {% block body %}
 
     <main>
-        <header>
-            <nav>
-                <a href="{{ path('app_profile') }}"><img src="{{ asset('assets/images/logo.png') }}" alt="logo site"></a>
-                <ul>
-                    <li><a href="{{ path('app_contacts') }}">Contact</a></li>
-                    <li><a href="{{ path('app_mon_compte') }}">Mon compte</a></li>
-                    <li><a href="{{ path('app_logout') }}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Deconnexion</a></li>
-                </ul>
-            </nav>
-        </header>
-
         <section class="infos">
             {% for user in users %}
                 {% if user.id == app.user.id %}
