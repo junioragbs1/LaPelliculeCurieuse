@@ -59,6 +59,11 @@
             }) }}
         </div>
 
+        {# Champ pour uploader l’affiche #}
+        <div class="mb-3">
+            {{ form_row(form.affiche, { 'label': 'Affiche du film', 'attr': {'class': 'form-control'} }) }}
+        </div>
+
         <div class="d-grid">
             <button type="submit" class="btn btn-primary btn-lg">
                 ✅ Ajouter le film

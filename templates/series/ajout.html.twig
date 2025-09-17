@@ -13,9 +13,8 @@
     <div class="formulaire">
         {# Formulaire #}
 
-        {{ form_start(form, {
-            'attr': { 'class': 'card shadow p-4', 'style': 'max-width:600px; margin:3rem auto;' }
-        }) }}
+        {{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+
 
         <h2 class="mb-4 text-center text-primary"> Ajouter une serie</h2>
 
@@ -60,6 +59,12 @@
                 'attr': {'class': 'form-control'}
             }) }}
         </div>
+
+        {# Champ pour uploader l’affiche #}
+        <div class="mb-3">
+            {{ form_row(form.affiche, { 'label': 'Affiche de la serie', 'attr': {'class': 'form-control'} }) }}
+        </div>
+
 
         <div class="d-grid">
             <button type="submit" class="btn btn-primary btn-lg">

@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Avis;
-use App\Entity\films;
+use App\Entity\Films;
 use App\Entity\Series;
 use App\Entity\Users;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;

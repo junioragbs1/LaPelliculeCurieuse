@@ -6,6 +6,8 @@ use App\Entity\Series;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
 
 class AjoutSeriesFormType extends AbstractType
 {
@@ -18,7 +20,18 @@ class AjoutSeriesFormType extends AbstractType
             ->add('dateDeSortie')
             ->add('duree')
             ->add('realisateurs')
-        ;
+            ->add('affiche', FileType::class, [
+                'label' => 'Affiche de la série',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5M',
+                        'mimeTypes' => ['image/jpeg', 'image/png'],
+                        'mimeTypesMessage' => 'Merci d’uploader une image JPG ou PNG',
+                    ])
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

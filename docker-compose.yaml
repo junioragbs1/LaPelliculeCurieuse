@@ -46,11 +46,14 @@ services:
       - ./redis_data:/data
 
   # Service mail pour le développement
-  mailer:
-    image: axllent/mailpit
+  mailog:
+    image: mailhog/mailhog
     container_name: symfony_mailer
+    logging:
+        driver: 'none'
     ports:
       - "8025:8025"  # Interface web
+      - "1025:1025" #SMTP
     environment:
       MP_SMTP_AUTH_ACCEPT_ANY: 1
       MP_SMTP_AUTH_ALLOW_INSECURE: 1

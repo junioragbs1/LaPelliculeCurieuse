@@ -2,10 +2,16 @@
 
 namespace App\Controller;
 
+use App\Form\ResetPasswordRequestFormType;
+use App\Repository\UsersRepository;
+use App\Service\SendEmailService;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Service\JWTService;
 
 class AuthSecurityController extends AbstractController
 {

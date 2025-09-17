@@ -1,16 +1,35 @@
 {% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
 {% endblock %}
 
 {% block body %}
+
     <header>
-        <nav>
-            <a href="{{ path('app_profile') }}"><img src="{{ asset('assets/images/logo.png') }}" alt="logo site"></a>
-            <ul>
-                <li><a href="{{ path('app_contacts') }}">Contact</a></li>
-                <li><a href="{{ path('app_mon_compte') }}">Mon compte</a></li>
-                <li><a href="{{ path('app_logout') }}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Deconnexion</a></li>
-            </ul>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ path('app_profile') }}"><img src="{{ asset('assets/images/logo.png') }}" alt="logo site"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ path('app_contacts') }}">Contacts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_mon_compte') }}">Mon compte</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search"/>
+                        <button class="btn btn-outline-success" type="submit">Rechercher</button>
+                    </form>
+                </div>
+            </div>
         </nav>
     </header>
 <div class="content">
@@ -31,29 +50,33 @@
                     Plongez dans l’univers des séries : suspens haletant, comédies irrésistibles, drames intenses ou aventures fantastiques. Découvrez les dernières nouveautés, les classiques incontournables et laissez-vous captiver épisode après épisode.
                 </p>
                 <article class="series">
-                    <article class="series">
-                        {% for serie in series %}
-                            <div class="serie-card">
-                                <h3> {{ serie.titre }} par {{ serie.realisateurs }} </h3>
-                                 <img src="{{ asset('assets/images/LPC.png') }}" alt="logo film" class="serie-img">
-                                <p><strong>Description :</strong> {{ serie.description }}</p>
-                                <p><strong>Date de sortie :</strong> {{ serie.datedesortie|date('d/m/Y') }}</p>
-                                <p><strong>Genre :</strong> {{ serie.genre }}</p>
-                                <p><strong>Durée :</strong> {{ serie.duree }} min par épisode</p>
-                                <p><strong>Ajouté par :</strong> <small>{{ app.user.prenom }} {{ app.user.nom }}</small></p>
+                    {% for serie in series %}
+                        <div class="serie-card">
+                            <h3>{{ serie.titre }} par {{ serie.realisateurs }}</h3>
 
-                                <p><strong>Avis :</strong></p>
-                                <ul>
-                                    {% for avis in serie.serieAvis %}
-                                        <li>Note : {{ avis.note }} par {{ avis.idUtilisateur.nom }}</li>
-                                    {% else %}
-                                        <li>Aucun avis pour cette série.</li>
-                                    {% endfor %}
-                                </ul>
-                                <a href="{{ path('app_contacts_ajout') }}" class="btn-avis">Ajouter un avis</a>
-                            </div>
-                        {% endfor %}
-                    </article>
+                            {# Affichage de l'image si elle existe #}
+                            {% if serie.affiche %}
+                                <img src="{{ asset('uploads/images/' ~ serie.affiche) }}"
+                                     alt="{{ serie.titre }}"
+                                     class="serie-img">
+                            {% endif %}
+                            <p><strong>Description :</strong> {{ serie.description }}</p>
+                            <p><strong>Date de sortie :</strong> {{ serie.datedesortie|date('d/m/Y') }}</p>
+                            <p><strong>Genre :</strong> {{ serie.genre }}</p>
+                            <p><strong>Durée :</strong> {{ serie.duree }} min par épisode</p>
+                            <p><strong>Ajouté par :</strong> <small>{{ app.user.prenom }} {{ app.user.nom }}</small></p>
+                            <p><strong>Avis :</strong></p>
+                            <ul>
+                                {% for avis in serie.serieAvis %}
+                                    <li>Note : {{ avis.note }} par {{ avis.idUtilisateur.nom }}</li>
+                                {% else %}
+                                    <li>Aucune note pour cette série.</li>
+                                {% endfor %}
+                            </ul>
+
+                            <a href="{{ path('app_contacts_ajout') }}" class="btn-avis">Ajouter un avis</a>
+                        </div>
+                    {% endfor %}
 
                 </article>
             </section>
@@ -68,8 +91,9 @@
                         {% for film in films %}
                             <div class="film-card">
                                 <h3>{{ film.titre }} par {{ film.realisateurs }}</h3>
-                                <img src="{{ asset('assets/images/Pulp_Fiction .jpg') }}" alt="logo film" class="film-img">
-
+                                {% if film.affiche %}
+                                    <img src="{{ asset('uploads/images/' ~ film.affiche) }}" alt="{{ film.titre }}">
+                                {% endif %}
                                 <p><strong>Description :</strong> {{ film.description }}</p>
                                 <p><strong>Date de sortie :</strong> {{ film.datedesortie|date('d/m/Y') }}</p>
                                 <p><strong>Genre :</strong> {{ film.genre }}</p>
@@ -81,7 +105,7 @@
                                     {% for avis in film.filmAvis %}
                                         <li>Note : {{ avis.note }} par {{ avis.idUtilisateur.nom }}</li>
                                     {% else %}
-                                        <li>Aucun avis pour ce film.</li>
+                                        <li>Aucune note pour ce film.</li>
                                     {% endfor %}
                                 </ul>
                                 <a href="{{ path('app_contacts_ajout') }}" class="btn-avis">Ajouter un avis</a>
@@ -95,5 +119,7 @@
 </div>
     {% block javascripts %}
         <script src="https://kit.fontawesome.com/9dafe03bf9.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     {% endblock %}
 {% endblock %}
+

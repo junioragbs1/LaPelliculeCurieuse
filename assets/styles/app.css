@@ -1,53 +1,62 @@
-*{
+/* ========== RESET GLOBAL ========== */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-img{
-    width: 100px;
-    height: 100px;
-}
-nav , footer {
-    background-color: gainsboro;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-section > h2 , section > p{
-    text-align: center;
-    padding: 5px;
-}
-
-body{
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #1F1F3B;
     color: white;
 }
 
-/* Container principal */
-.entete{
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+/* ========== FOOTER ========== */
+footer {
+    background-color: gainsboro;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ========== TITRES SECTIONS ========== */
+section > h2,
+section > p {
+    text-align: center;
+    padding: 5px;
+    margin: 0 2rem;
+}
+
+/* ========== PROFILE ========== */
+.entete {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .profile {
     color: #fff;
     padding: 2rem;
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Titre de bienvenue */
 .profile h2 {
-    margin: 0 0 1rem 0;
+    margin-bottom: 1rem;
     font-size: 2rem;
 }
 
-/* Section pour ajout film/serie */
 .profile .entete {
-    display: flex;
     justify-content: center;
     gap: 1rem;
     margin-bottom: 1.5rem;
@@ -60,24 +69,37 @@ body{
     align-self: center;
 }
 
-/* Boutons ajout film/serie */
-.profile .entete a {
-    display: inline-block;
+.profile .entete a,
+.profile button {
     padding: 0.6rem 1.2rem;
-    background-color: #fff;
-    color: #4a90e2;
-    font-weight: bold;
-    text-decoration: none;
     border-radius: 8px;
+    font-weight: bold;
     transition: background-color 0.2s, transform 0.2s;
+    cursor: pointer;
 }
 
+.profile .entete a {
+    display: inline-block;
+    background-color: #fff;
+    color: #4a90e2;
+}
+
+.profile button {
+    border: none;
+    background-color: #fff;
+    color: #4a90e2;
+}
+
+.profile button:hover,
 .profile .entete a:hover {
-    background-color: #e6f0ff;
     transform: scale(1.05);
 }
 
-/* Barre de recherche et bouton */
+.profile button:hover {
+    background-color: #e6f0ff;
+}
+
+/* Barre de recherche */
 .profile input[type="search"] {
     padding: 0.5rem 1rem;
     border-radius: 8px 0 0 8px;
@@ -87,23 +109,7 @@ body{
     outline: none;
 }
 
-.profile button {
-    padding: 0.5rem 1rem;
-    border-radius: 0 8px 8px 0;
-    border: none;
-    background-color: #fff;
-    color: #4a90e2;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
-}
-
-.profile button:hover {
-    background-color: #e6f0ff;
-    transform: scale(1.05);
-}
-
-/* Responsive */
+/* Responsive profil */
 @media (max-width: 600px) {
     .profile .entete {
         flex-direction: column;
@@ -120,16 +126,117 @@ body{
     }
 }
 
+/* ========== FILMS & SERIES ========== */
+.film-card,
+.serie-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
+.film-card:hover,
+.serie-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+.film-card img,
+.serie-card img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.film-card img:hover,
+.serie-card img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.film-card h3,
+.serie-card h3 {
+    background-color: #4a90e2;
+    color: #fff;
+    padding: 1rem;
+    margin: 0;
+    width: 100%;
+    font-size: 1.3rem;
+    border-radius: 12px 12px 0 0;
+}
+
+.film-card p,
+.serie-card p,
+.film-card small,
+.serie-card small,
+.film-card ul,
+.serie-card ul {
+    margin: 0.5rem 1rem;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.film-card ul,
+.serie-card ul {
+    padding-left: 1.5rem;
+}
+
+.film-card li,
+.serie-card li {
+    margin-bottom: 0.3rem;
+}
+
+.film-card .btn-avis,
+.serie-card .btn-avis {
+    display: inline-block;
+    margin: 0.8rem 0 1rem 0;
+    padding: 0.6rem 1.2rem;
+    background-color: #4a90e2;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.film-card .btn-avis:hover,
+.serie-card .btn-avis:hover {
+    background-color: #357abd;
+    transform: scale(1.05);
+}
+
+/* Container articles */
+article {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2em;
+    background-color: #1F1F3B;
+}
+
+/* Infos box */
 .infos {
     max-width: 600px;
     margin: 2rem auto;
     padding: 2rem;
     background: #fff;
     border-radius: 1rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     font-family: "Segoe UI", sans-serif;
 }
+
 .infos h3 {
     margin-bottom: 1rem;
     color: #2c3e50;
@@ -140,179 +247,12 @@ body{
     color: #555;
 }
 
-/*{ CSS series}*/
-/* Container principal */
-article {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-    padding: 2em;
-    background-color: #1F1F3B;
-}
-
-/* Card commune pour film et série */
-.serie-card, .film-card {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: transform 0.25s, box-shadow 0.25s;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.serie-card:hover, .film-card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
-}
-
-/* Titres */
-.serie-card h3, .film-card h3 {
-    background-color: #4a90e2;
-    color: #fff;
-    padding: 1rem;
-    margin: 0;
-    width: 100%;
-    font-size: 1.3rem;
-    border-radius: 12px 12px 0 0;
-}
-
-/* Images */
-.serie-card .serie-img, .film-card .film-img {
-    margin: 1rem 0;
-    width: 80%;
-    border-radius: 10px;
-    object-fit: cover;
-}
-
-/* Paragraphes */
-.serie-card p, .film-card p {
-    margin: 0.4rem 1rem;
-    color: #333;
-    line-height: 1.4;
-}
-
-/* Small text */
-.serie-card small, .film-card small {
-    color: #666;
-    font-style: italic;
-}
-
-/* Liste des avis */
-.serie-card ul, .film-card ul {
-    list-style-type: disc;
-    padding-left: 1.5rem;
-    margin: 0.5rem 0 1rem 0;
-    color: #444;
-}
-
-.serie-card li, .film-card li {
-    margin-bottom: 0.3rem;
-}
-
-/* Bouton / lien Ajouter un avis */
-.serie-card .btn-avis, .film-card .btn-avis {
-    display: inline-block;
-    margin: 0.8rem 0 1rem 0;
-    padding: 0.6rem 1.2rem;
-    background-color: #4a90e2;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: background-color 0.2s, transform 0.2s;
-}
-
-.serie-card .btn-avis:hover, .film-card .btn-avis:hover {
-    background-color: #357abd;
-    transform: scale(1.05);
-}
-
-/* Responsive */
-@media (max-width: 650px) {
-    .serie-card, .film-card {
+/* Responsive cards */
+@media (max-width: 600px) {
+    .film-card,
+    .serie-card {
         width: 90%;
     }
 }
-/* Navbar principale */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.8rem 2rem;
-    background-color: gainsboro;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
-/* Logo */
-nav a img {
-    height: 50px;
-    width: auto;
-    border-radius: 8px;
-    transition: transform 0.2s;
-}
-
-nav a img:hover {
-    transform: scale(1.05);
-}
-
-/* Menu */
-nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 1.5rem;
-}
-
-nav ul li a {
-    color: #E50914;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    transition: background-color 0.2s, transform 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-}
-
-/* Hover sur les liens */
-nav ul li a:hover {
-    background-color: #1F1F3B;
-    transform: scale(1.05);
-}
-
-/* Icone Font Awesome */
-nav ul li a i {
-    font-size: 1rem;
-}
-
-/* Responsive : menu vertical sur mobile */
-@media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.8rem;
-        padding: 1rem;
-    }
-
-    nav ul {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    nav ul li a {
-        width: 100%;
-        padding: 0.6rem 1rem;
-    }
-}
-
+/* ========== HEADER / NAVBAR MODERNE ========== */
