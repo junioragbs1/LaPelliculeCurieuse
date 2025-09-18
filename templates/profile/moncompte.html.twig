@@ -15,8 +15,9 @@
                 {% endif %}
             {% endfor %}
 
-            <p><a href="{{ path('app_forgot_password_request') }}" class="text-decoration-none">Reinitialiser votre mot de passe</a></p>
+            <p><a href="{{ path('app_forgot_password_request') }}" class="btn-envoie">Reinitialiser votre mot de passe</a></p>
 
+                <a class="btn-envoie" href="{{ path('app_profile') }}" > <- Retour en page d'accueil </a>
         </section>
     </main>
 {% endblock %}

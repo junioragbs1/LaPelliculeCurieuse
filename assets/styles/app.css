@@ -256,6 +256,18 @@ article {
     margin: 0.5rem 0;
     color: #555;
 }
+.infos a {
+    margin: 0.5rem 0;
+    color: darkgreen;
+}
+.infos a:hover {
+    text-decoration: underline;
+    border: solid #e6f0ff;
+    background-color: #e6f0ff;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1rem;
+    color: #1F1F3B;
+}
 
 /* Responsive cards */
 @media (max-width: 600px) {
@@ -300,4 +312,47 @@ button{
     border: none;
     width: 250px;
     max-width: 70%;
+}
+/* Page demande de reinitialisation */
+
+.small {
+    margin: 2rem;
+}
+.request{
+    padding: 1rem 1rem;
+    color: #1F1F3B;
+}
+.btn-envoie , label{
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: none;
+    width: 250px;
+    max-width: 70%;
+    margin: 0 2rem;
+}
+.btn-envoie:hover{
+    transform: scale(1.05);
+    background-color: #1F1F3B;
+    color: white;
+}
+.container{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background-color: gainsboro;
+    padding: 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    margin: 1rem auto;
+    max-width: 70%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.container p , label{
+    margin: 0.5rem 1rem;
+    color: #2c3e50;
+    text-align: center;
+    font-size: 1.3rem;
+}
+.container a{
+    color: darkgreen;
 }
