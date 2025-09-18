@@ -16,6 +16,12 @@ class ResetPasswordRequestFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'attr' => ['autocomplete' => 'email'],
                 'constraints' => [
+                    new Assert\Length([
+                        'min' => 3,
+                        'max' => 25,
+                        'minMessage' => 'Votre pseudo doit comporter au moins {{ limit }} caractères.',
+                        'maxMessage' => 'Votre pseudo ne peut pas dépasser {{ limit }} caractères.',
+                    ]),
                     new NotBlank([
                         'message' => 'Veuillez entrer votre email',
                     ]),

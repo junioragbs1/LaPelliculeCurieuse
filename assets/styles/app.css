@@ -1,4 +1,4 @@
-/* ========== RESET GLOBAL ========== */
+/* ========== GLOBAL ========== */
 * {
     margin: 0;
     padding: 0;
@@ -6,17 +6,17 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #1F1F3B;
-    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* police d'ecriture */
+    background-color: #1F1F3B; /* coleur de fond */
+    color: #FFFFFF; /* couleur d'ecriture page profile */
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none; /* j'eneleve le soulignement automatique des liens  */
     color: #fff;
 }
 
-img {
+img { /* largeur et hauteur de l'image en navbar */
     width: 100px;
     height: 100px;
 }
@@ -25,11 +25,22 @@ img {
 footer {
     background-color: gainsboro;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    padding: 16px;
+    color: black;
+}
+
+footer a {
+    text-decoration: none;
+    font-weight: bold;
+}
+footer a:hover {
+    text-decoration: underline;
 }
 
 /* ========== TITRES SECTIONS ========== */
+
 section > h2,
 section > p {
     text-align: center;
@@ -37,7 +48,7 @@ section > p {
     margin: 0 2rem;
 }
 
-/* ========== PROFILE ========== */
+/* ========== PAGE PROFILE ========== */
 .entete {
     display: flex;
     justify-content: center;
@@ -48,7 +59,6 @@ section > p {
     color: #fff;
     padding: 2rem;
     text-align: center;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .profile h2 {
@@ -58,7 +68,7 @@ section > p {
 
 .profile .entete {
     justify-content: center;
-    gap: 1rem;
+    gap: 1rem; /* 1rem c'est a dire 16px */
     margin-bottom: 1.5rem;
     flex-wrap: wrap;
 }
@@ -103,17 +113,16 @@ section > p {
 .profile input[type="search"] {
     padding: 0.5rem 1rem;
     border-radius: 8px 0 0 8px;
-    border: none;
-    width: 250px;
-    max-width: 70%;
-    outline: none;
+    border: none; /* pas de bordure */
+    width: 250px; /* largeur de 250px */
+    max-width: 70%; /* largeur maximum de 70% de l'ecran */
 }
 
 /* Responsive profil */
 @media (max-width: 600px) {
     .profile .entete {
-        flex-direction: column;
-        gap: 0.5rem;
+        flex-direction: column; /* je les aligne en colonne */
+        gap: 0.5rem; /* separation de 7px */
     }
 
     .profile input[type="search"] {
@@ -132,7 +141,7 @@ section > p {
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    overflow: hidden; /* elle ne va pas depasser le box */
     transition: transform 0.25s, box-shadow 0.25s;
     width: 500px;
     display: flex;
@@ -154,10 +163,10 @@ section > p {
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* transition sur l'ombre des boxe */
     display: block;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+    margin-bottom: 1rem; /* margin au dessous de l'image de films et series*/
+    margin-top: 1rem; /* margin au dessus du l'image des films et series  */
 }
 
 .film-card img:hover,
