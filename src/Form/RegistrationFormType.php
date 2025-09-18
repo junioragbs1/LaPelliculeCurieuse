@@ -11,14 +11,33 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
-
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints as Assert;
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
+            ->add('nom', TextType::class, [
+                'constraints' => [
+                    new Assert\Length([
+                        'min' => 3,
+                        'max' => 25,
+                        'minMessage' => 'Votre nom doit comporter au moins {{ limit }} caractères.',
+                        'maxMessage' => 'Votre nom ne peut pas dépasser {{ limit }} caractères.',
+                    ]),
+                ],
+            ])
+            ->add('prenom', TextType::class, [
+                'constraints' => [
+                    new Assert\Length([
+                        'min' => 3,
+                        'max' => 25,
+                        'minMessage' => 'Votre prenom doit comporter au moins {{ limit }} caractères.',
+                        'maxMessage' => 'Votre prenom ne peut pas dépasser {{ limit }} caractères.',
+                    ]),
+                ],
+            ])
             ->add('email')
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
@@ -29,8 +48,6 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [

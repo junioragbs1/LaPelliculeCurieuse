@@ -141,13 +141,14 @@ section > p {
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* elle ne va pas depasser le box */
+    overflow: scroll; /* elle va faire apparaitre le scroll quand ca depasse la hauteur  */
     transition: transform 0.25s, box-shadow 0.25s;
     width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    max-height: 800px;
 }
 
 .film-card:hover,
