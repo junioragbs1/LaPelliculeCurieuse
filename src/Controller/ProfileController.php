@@ -24,7 +24,6 @@ final class ProfileController extends AbstractController
             [
                 'films' => $filmsRepository->findAll(),
                 'series' => $seriesRepository->findAll(),
-                'id_serie_id' => $seriesRepository->findAll()[0]->getId(),
             ]);
     }
     #[Route('/mon_compte', name: 'app_mon_compte')]

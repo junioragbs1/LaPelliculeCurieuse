@@ -33,6 +33,20 @@
     </header>
 <div class="content">
         <main>
+            <div class="slider">
+                <button class="prev" >&#10094;</button>
+                    <div class="slides">
+                        {% for serie in series %}
+                            {% if serie.affiche %}
+                                <div class="slide">
+                                    <img src="{{ asset('uploads/images/' ~ serie.affiche) }}" alt="{{ serie.titre }}">
+                                                                    <h3>{{ serie.titre }}</h3>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                <button class="next" >&#10095;</button>
+            </div>
             <section>
                 <h2>Series </h2>
                 <p>
@@ -125,7 +139,7 @@
     {% block javascripts %}
         <script src="https://kit.fontawesome.com/9dafe03bf9.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-        <script src="js/dynamic.js" ></script>
+        <script src="{{ asset('js/slider.js') }}" ></script>
     {% endblock %}
 {% endblock %}
 

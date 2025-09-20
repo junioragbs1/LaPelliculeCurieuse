@@ -346,3 +346,45 @@ button{
 .container a{
     color: darkgreen;
 }
+/* Slider JS*/
+
+.slider {
+    position: relative;
+    width: 80%;
+    margin: 30px auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%; /* une slide prend toute la largeur */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.slide img {
+    width: auto;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10%;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
