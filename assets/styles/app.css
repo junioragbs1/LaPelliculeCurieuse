@@ -45,15 +45,12 @@ section > h2,
 section > p {
     text-align: center;
     padding: 5px;
-    margin: 0 2rem;
+    margin: 1rem auto;
+    max-width: 900px;
+    align-items: center;
 }
 
 /* ========== PAGE PROFILE ========== */
-.entete {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .profile {
     color: #fff;
@@ -62,14 +59,11 @@ section > p {
 }
 
 .profile h2 {
-    margin-bottom: 1rem;
     font-size: 2rem;
 }
 
 .profile .entete {
     justify-content: center;
-    gap: 1rem; /* 1rem c'est a dire 16px */
-    margin-bottom: 1.5rem;
     flex-wrap: wrap;
 }
 
@@ -92,6 +86,7 @@ section > p {
     display: inline-block;
     background-color: #fff;
     color: #4a90e2;
+    gap: 3px;
 }
 
 .profile button {
@@ -103,19 +98,12 @@ section > p {
 .profile button:hover,
 .profile .entete a:hover {
     transform: scale(1.05);
+    color: black;
+    background-color: #89BEC2;
 }
 
 .profile button:hover {
     background-color: #e6f0ff;
-}
-
-/* Barre de recherche */
-.profile input[type="search"] {
-    padding: 0.5rem 1rem;
-    border-radius: 8px 0 0 8px;
-    border: none; /* pas de bordure */
-    width: 250px; /* largeur de 250px */
-    max-width: 70%; /* largeur maximum de 70% de l'ecran */
 }
 
 /* Responsive profil */
@@ -141,14 +129,12 @@ section > p {
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    overflow: scroll; /* elle va faire apparaitre le scroll quand ca depasse la hauteur  */
     transition: transform 0.25s, box-shadow 0.25s;
-    width: 500px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    max-height: 800px;
 }
 
 .film-card:hover,
@@ -225,6 +211,10 @@ section > p {
     background-color: #357abd;
     transform: scale(1.05);
 }
+.film-card li,
+.serie-card li{
+    list-style: none;
+}
 
 /* Container articles */
 article {
@@ -232,7 +222,7 @@ article {
     justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
-    padding: 2em;
+    padding: 1em;
     background-color: #1F1F3B;
 }
 

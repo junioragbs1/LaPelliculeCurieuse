@@ -9,10 +9,10 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ path('app_profile') }}"><img src="{{ asset('assets/images/logo.png') }}" alt="logo site"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{ path('app_contacts') }}">Contacts</a>
@@ -24,76 +24,76 @@
                             <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
                         </li>
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search"/>
-                        <button class="btn btn-outline-success" type="submit">Rechercher</button>
-                    </form>
+                    <span class="navbar-text">
+                        <h4> Bienvenue {{ app.user.prenom }} {{ app.user.nom }}</h4>
+                    </span>
                 </div>
             </div>
         </nav>
     </header>
 <div class="content">
         <main>
-            <div class="profile">
-                <h2> Bienvenue {{ app.user.nom }} {{ app.user.prenom }}</h2>
-                <div class="entete">
-                    <p> Vous voulez ajouter : </p>
-                    <a href="{{ path('app_films_ajout') }}"> Un film ? </a>
-                    <a href="{{ path('app_series_ajout') }}"> Une serie ? </a>
-                </div>
-                    <input type="search" id="site-search" name="q" /> <button>Rechercher </button>
-            </div>
-
             <section>
-                <h2>Series :</h2>
+                <h2>Series </h2>
                 <p>
                     Plongez dans l’univers des séries : suspens haletant, comédies irrésistibles, drames intenses ou aventures fantastiques. Découvrez les dernières nouveautés, les classiques incontournables et laissez-vous captiver épisode après épisode.
                 </p>
+                <div class="profile">
+                    <div class="entete">
+                        <a href="{{ path('app_series_ajout') }}"> Ajouter une serie  </a>
+                    </div>
+                </div>
                 <article class="series">
                     {% for serie in series %}
-                        <div class="serie-card">
-                            <h3>{{ serie.titre }} par {{ serie.realisateurs }}</h3>
-
-                            {# Affichage de l'image si elle existe #}
-                            {% if serie.affiche %}
+                        {% if serie.affiche %}
+                            <div class="serie-card">
+                                <h3>{{ serie.titre }} par {{ serie.realisateurs }}</h3>
                                 <img src="{{ asset('uploads/images/' ~ serie.affiche) }}"
                                      alt="{{ serie.titre }}"
                                      class="serie-img">
-                            {% endif %}
-                            <p><strong>Description :</strong> {{ serie.description }}</p>
-                            <p><strong>Date de sortie :</strong> {{ serie.datedesortie|date('d/m/Y') }}</p>
-                            <p><strong>Genre :</strong> {{ serie.genre }}</p>
-                            <p><strong>Durée :</strong> {{ serie.duree }} min par épisode</p>
-                            <p><strong>Ajouté par :</strong> <small>{{ app.user.prenom }} {{ app.user.nom }}</small></p>
-                            <p><strong>Avis :</strong></p>
-                            <ul>
-                                {% for avis in serie.serieAvis %}
-                                    <li>Note : {{ avis.note }} par {{ avis.idUtilisateur.nom }}</li>
-                                {% else %}
-                                    <li>Aucune note pour cette série.</li>
-                                {% endfor %}
-                            </ul>
-
-                            <a href="{{ path('app_contacts_ajout') }}" class="btn-avis">Ajouter un avis</a>
-                        </div>
+                                <p><strong>Description :</strong> {{ serie.description }}</p>
+                                <p><strong>Date de sortie :</strong> {{ serie.datedesortie|date('d/m/Y') }}</p>
+                                <p><strong>Genre :</strong> {{ serie.genre }}</p>
+                                <p><strong>Durée :</strong> {{ serie.duree }} min par épisode</p>
+                                <p><strong>Ajouté par :</strong> <small>{{ app.user.prenom }} {{ app.user.nom }}</small></p>
+                                <p><strong>Avis :</strong></p>
+                                <ul>
+                                    {% for avis in serie.serieAvis %}
+                                        <li class="avis">Note : {{ avis.note }} par {{ avis.idUtilisateur.nom }}</li>
+                                    {% else %}
+                                        <li>Aucune note pour cette série.</li>
+                                    {% endfor %}
+                                </ul>
+                                <a href="{{ path('app_contacts_ajout') }}" class="btn-avis">Ajouter un avis</a>
+                            </div>
+                        {% endif %}
                     {% endfor %}
 
                 </article>
             </section>
 
             <section>
-                <h2>Films :</h2>
+                <h2>Films </h2>
                 <p>
                     Découvrez notre collection de films pour tous les goûts : classiques incontournables, nouveautés captivantes et pépites méconnues. Parcourez, explorez et laissez-vous inspirer par des histoires qui vous feront rire, pleurer, frissonner ou rêver.
                 </p>
+                <div class="profile">
+                    <div class="entete">
+                         <a href="{{ path('app_films_ajout') }}"> Ajoutez un film ? </a>
+                    </div>
+                </div>
                 <article class="films">
-                    <article class="films">
-                        {% for film in films %}
+                    {% for film in films %}
+{#                        Je fais la boucle pour afficher tout les films #}
+                        {% if film.affiche %}
+{#                            S'il y a une affiche il va afficher , j'ai juste mis une condition if#}
                             <div class="film-card">
                                 <h3>{{ film.titre }} par {{ film.realisateurs }}</h3>
-                                {% if film.affiche %}
-                                    <img src="{{ asset('uploads/images/' ~ film.affiche) }}" alt="{{ film.titre }}">
-                                {% endif %}
+
+                                <img src="{{ asset('uploads/images/' ~ film.affiche) }}"
+                                     alt="{{ film.titre }}"
+                                     class="film-img">
+
                                 <p><strong>Description :</strong> {{ film.description }}</p>
                                 <p><strong>Date de sortie :</strong> {{ film.datedesortie|date('d/m/Y') }}</p>
                                 <p><strong>Genre :</strong> {{ film.genre }}</p>
@@ -108,12 +108,13 @@
                                         <li>Aucune note pour ce film.</li>
                                     {% endfor %}
                                 </ul>
+
                                 <a href="{{ path('app_contacts_ajout') }}" class="btn-avis">Ajouter un avis</a>
                             </div>
-                        {% endfor %}
-                    </article>
-
+                        {% endif %}
+                    {% endfor %}
                 </article>
+
             </section>
             <footer >
                 © 2025 LaPelliculeCurieuse – Tous droits réservés.
@@ -124,6 +125,7 @@
     {% block javascripts %}
         <script src="https://kit.fontawesome.com/9dafe03bf9.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="js/dynamic.js" ></script>
     {% endblock %}
 {% endblock %}
 

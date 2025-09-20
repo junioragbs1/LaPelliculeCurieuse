@@ -1,4 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* police d'ecriture */
+    background-color: #1F1F3B; /* coleur de fond */
+    color: #FFFFFF; /* couleur d'ecriture page profile */
+}
+/* ========== FOOTER ========== */
+footer {
+    background-color: gainsboro;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 16px;
+    color: black;
+}
 
-.main_header , h3{
-    margin: 2em;
+footer a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.accueil{
+    text-align: center;
+    padding: 5px;
+    margin: 1.5rem auto;
+    max-width: 900px;
+    align-items: center;
+    color: #EDE9FE;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+}
+h2{
+    text-align: center;
+    font-weight: bold;
+    margin: 1.5rem auto;
+    color: #EDE9FE;
+}
+.coverimg{
+    width: 90%;
+    height: 500px;
+    background-image: url("/assets/images/covering.jpg");
+    background-size: cover;
+    background-position: center;
+    margin: 1rem auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+.item-card{
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem auto;
+    padding: 1rem;
+    gap: 3rem;
+    color: #1F1F3B;
+    align-items: center;
+    word-spacing: 2px;
+    background-color: #EDE9FE;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px #EDE9FE;
+    cursor: pointer;
+    width: 80%;
+}
+.item-card:hover{
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+.item-card img{
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* transition sur l'ombre des boxe */
+    display: block;
+    margin-bottom: 1rem; /* margin au dessous de l'image de films et series*/
+    margin-top: 1rem; /* margin au dessus du l'image des films et series  */
+}
+.item-card img:hover{
+    transform: scale(1.05);
 }

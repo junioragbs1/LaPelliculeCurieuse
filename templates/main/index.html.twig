@@ -1,30 +1,64 @@
-{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('styles/baseMain.css') }}">
+{% endblock %}
 
 {% block body %}
 
     <main>
         <header  >
-            <div class="main_header">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ path('app_accueil') }}"><img src="{{ asset('assets/images/logo.png') }}" alt="logo site" width="100" height="100"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_contacts') }}">Contact</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type ="search" placeholder="Search" id="site-search" name="q" />
+                        <button class="btn btn-outline-success">Rechercher </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+            <div class="accueil">
                 <h2> Bienvenue sur votre site de cinéphiles !!</h2>
                 <p>
                     Plongez au cœur du 7ᵉ art : critiques, résumés, analyses et coups de cœur autour des plus grands classiques comme des nouveautés. Ici, le cinéma se vit, se partage et se redécouvre à travers toutes ses émotions.
                 </p>
             </div>
         </header>
-        <h3>Les dernières sorties :</h3>
-            <article class="card" style="margin: 2rem;">
+        <div class="coverimg"></div>
+        <h2 >Les dernières sorties :</h2>
+            <article >
                 {% for classique in Classiques %}
-                    <div class="card-header">
-                        <h3 > Titre : {{ classique.nom }}</h3>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title"> Réalisateur : {{ classique.realisateurs }}</h4>
-                        <p > Description : {{ classique.description }}</p>
-                        <p> Date de sortie : {{ classique.datedesortie|date('d/m/Y')}}</p>
-                        <p> Genre : {{ classique.genre}}</p>
-                        <p> Durée : {{ classique.duree}} min</p>
+
+                    <div class="item-card">
+                        <div class="item-image">
+                            <img src="{{ asset('assets/images/logo.png') }}" alt="Inception">
+                        </div>
+                        <div class="item-infos">
+                            <h3 > Titre : {{ classique.nom }}</h3>
+                            <h4 > Réalisateur : {{ classique.realisateurs }}</h4>
+                            <p > Description : {{ classique.description }}</p>
+                            <p> Date de sortie : {{ classique.datedesortie|date('d/m/Y')}}</p>
+                            <p> Genre : {{ classique.genre}}</p>
+                            <p> Durée: {{ classique.duree}} min</p>
+                        </div>
                     </div>
                 {% endfor %}
             </article>
     </main>
+    <footer >
+        © 2025 LaPelliculeCurieuse – Tous droits réservés.
+        <a class="link-primary" href="{{ path('app_mentions') }}">Mentions légales</a>
+    </footer>
 {% endblock %}

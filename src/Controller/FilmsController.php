@@ -27,28 +27,32 @@ final class FilmsController extends AbstractController
 
     // cette methode de controller servira a ajouter les films .
     #[Route('/ajouter', name: 'ajout')]
-    public function ajouterFilm(Request $request, EntityManagerInterface $em, SluggerInterface $slugger): Response
+    public function ajouterFilm(
+        Request $request,
+        EntityManagerInterface $em,
+        SluggerInterface $slugger
+    ): Response
     {
-        // 1️⃣ Crée un nouveau film vide
+        // Crée un nouveau film vide
         $film = new Films();
 
-        // 2️⃣ Crée le formulaire et le lie à l'entité
-        $filmform = $this->createForm(AjoutFilmFormType::class, $film);
+        // Crée le formulaire et le lie à l'entité
+        $filmForm = $this->createForm(AjoutFilmFormType::class, $film);
 
-        // 3️⃣ Traite la requête
-        $filmform->handleRequest($request);
+        // Traite la requête
+        $filmForm->handleRequest($request);
 
-        // 4️⃣ Vérifie si le formulaire est soumis et valide
-        if ($filmform->isSubmitted() && $filmform->isValid()) {
-            // 5️⃣ Récupère le fichier image depuis le formulaire
-            $imageFile = $filmform->get('affiche')->getData();
+        // Vérifie si le formulaire est soumis et valide
+        if ($filmForm->isSubmitted() && $filmForm->isValid()) {
+            //  Récupère le fichier image depuis le formulaire
+            $imageFile = $filmForm->get('affiche')->getData();
 
             if ($imageFile) {
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
 
-                // 6️⃣ Déplace le fichier dans le dossier prévu
+                //  Déplace le fichier dans le dossier prévu
                 try {
                     $imageFile->move(
                         $this->getParameter('images_directory'),
@@ -58,23 +62,32 @@ final class FilmsController extends AbstractController
                     $this->addFlash('error', 'Erreur lors de l’upload de l’image');
                 }
 
-                // 7️⃣ Enregistre le nom du fichier dans l'entité
+                // Enregistre le nom du fichier dans l'entité
                 $film->setAffiche($newFilename);
             }
 
-            // 8️⃣ Persiste et flush l'entité
+            //  Persiste et flush l'entité
             $em->persist($film);
             $em->flush();
 
             $this->addFlash('success', 'Film ajouté avec succès !');
 
-            return $this->redirectToRoute('app_profile'); // redirection après ajout
+            return $this->redirectToRoute('app_profile');
         }
 
-        // 9️⃣ Affiche le formulaire si pas soumis ou invalide
+        // Récupérer uniquement les films avec affiche
+        $filmsAvecAffiche = $em->getRepository(Films::class)
+            ->createQueryBuilder('f')
+            ->where('f.affiche IS NOT NULL')
+            ->getQuery()
+            ->getResult();
+
+        // Affiche le formulaire
         return $this->render('films/ajout.html.twig', [
-            'form' => $filmform->createView(),
+            'form' => $filmForm->createView(),
+            'films' => $filmsAvecAffiche, // envoie seulement les films avec image
         ]);
     }
+
 
 }

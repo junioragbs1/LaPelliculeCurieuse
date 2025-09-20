@@ -26,28 +26,32 @@ final class SeriesController extends AbstractController
 
     // cette methode de controller servira a ajouter les films .
     #[Route('/ajouter', name: 'ajout')]
-    public function ajouterSerie(Request $request, EntityManagerInterface $em, SluggerInterface $slugger): Response
+    public function ajouterSerie(
+        Request $request,
+        EntityManagerInterface $em,
+        SluggerInterface $slugger
+    ): Response
     {
-        // 1️⃣ Initialise une série vide
+        // Initialise une série vide
         $serie = new Series();
 
-        // 2️⃣ Crée le formulaire et lie-le à l'entité
-        $serieform = $this->createForm(AjoutSeriesFormType::class, $serie);
+        // Crée le formulaire et lie-le à l'entité
+        $serieForm = $this->createForm(AjoutSeriesFormType::class, $serie);
 
-        // 3️⃣ Traite la requête
-        $serieform->handleRequest($request);
+        // Traite la requête
+        $serieForm->handleRequest($request);
 
-        // 4️⃣ Vérifie si le formulaire est soumis et valide
-        if ($serieform->isSubmitted() && $serieform->isValid()) {
-            // 5️⃣ Récupère le fichier image depuis le formulaire
-            $imageFile = $serieform->get('affiche')->getData();
+        // Vérifie si le formulaire est soumis et valide
+        if ($serieForm->isSubmitted() && $serieForm->isValid()) {
+            // Récupère le fichier image depuis le formulaire
+            $imageFile = $serieForm->get('affiche')->getData();
 
             if ($imageFile) {
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
 
-                // 6️⃣ Déplace le fichier dans le dossier prévu
+                // Déplace le fichier dans le dossier prévu
                 try {
                     $imageFile->move(
                         $this->getParameter('images_directory'),
@@ -57,11 +61,11 @@ final class SeriesController extends AbstractController
                     $this->addFlash('error', 'Erreur lors de l’upload de l’image');
                 }
 
-                // 7️⃣ Enregistre le nom du fichier dans l'entité
+                // Enregistre le nom du fichier dans l'entité
                 $serie->setAffiche($newFilename);
             }
 
-            // 8️⃣ Persiste et flush l'entité
+            //Persiste et flush l'entité
             $em->persist($serie);
             $em->flush();
 
@@ -70,9 +74,15 @@ final class SeriesController extends AbstractController
             return $this->redirectToRoute('app_profile');
         }
 
-        // 9️⃣ Affiche le formulaire si pas soumis ou invalide
+        //Récupère toutes les séries avec affiche uniquement
+        $seriesAvecAffiche = $em->getRepository(Series::class)->findBy(
+            ['affiche' => true] // filtre les séries qui ont une image
+        );
+
+        // Affiche le formulaire
         return $this->render('series/ajout.html.twig', [
-            'form' => $serieform->createView(),
+            'form' => $serieForm->createView(),
+            'series' => $seriesAvecAffiche, // envoie uniquement les séries avec image
         ]);
     }
 
