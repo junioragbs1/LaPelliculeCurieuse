@@ -354,6 +354,11 @@ button{
     margin: 30px auto;
     overflow: hidden;
     border-radius: 10px;
+    /*
+    Position relative
+    largeur de 80%
+    Le surplus sera caché
+    */
 }
 
 .slides {
@@ -371,6 +376,10 @@ button{
     width: auto;
     height: 300px;
     border-radius: 10px;
+    /*
+   * L'image prends la largeur pour qu'elle soit bien visible
+   * la hauteur est de 300px
+   */
 }
 
 .prev, .next {
@@ -384,6 +393,10 @@ button{
     cursor: pointer;
     padding: 10px;
     border-radius: 10%;
+}
+.prev:hover, .next:hover {
+    background: #e6f0ff;
+    color: black;
 }
 
 .prev { left: 10px; }
