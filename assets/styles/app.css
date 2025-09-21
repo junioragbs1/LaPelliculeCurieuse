@@ -48,6 +48,7 @@ section > p {
     margin: 1rem auto;
     max-width: 900px;
     align-items: center;
+
 }
 
 /* ========== PAGE PROFILE ========== */
@@ -85,7 +86,7 @@ section > p {
 .profile .entete a {
     display: inline-block;
     background-color: #fff;
-    color: #4a90e2;
+    color: red;
     gap: 3px;
 }
 
@@ -376,6 +377,7 @@ button{
     width: auto;
     height: 300px;
     border-radius: 10px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.6);
     /*
    * L'image prends la largeur pour qu'elle soit bien visible
    * la hauteur est de 300px
