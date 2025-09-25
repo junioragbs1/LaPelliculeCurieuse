@@ -10,13 +10,11 @@
     {{ form_start(resetForm) }}
 
 
-    <div class="input">
         {{
         form_row(resetForm.plainPassword , {
-            'label' : 'Saisissez votre nouveau mot de passe : '
+            'label' : 'Saisissez votre nouveau mot de passe : ','attr': {'class': 'mon-input'}
         })
         }}
-    </div>
 
         <button class="btn-envoie">Réinitialiser le mot de passe</button>
     {{ form_end(resetForm) }}

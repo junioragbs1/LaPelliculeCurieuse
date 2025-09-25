@@ -3,76 +3,60 @@
 {% endblock %}
 {% block stylesheets %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
 {% endblock %}
 
 {% block body %}
-    <style>
-        .example-wrapper { margin: auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    </style>
 
-    <div class="example-wrapper">
-        {# Formulaire #}
 
-        {{ form_start(form, { 'attr': { 'class': 'card shadow p-4', 'style': 'max-width:600px; margin:3rem auto;' } }) }}
+    <div class="formulaire">
+        {{ form_start(form) }}
 
-        <h2 class="mb-4 text-center text-primary"> Ajouter un film</h2>
+        <h2 class="connect"> Ajouter un film</h2>
 
-        <div class="mb-3">
             {{ form_row(form.titre, {
-                'label': 'Titre',
-                'attr': {'class': 'form-control'}
+                'label': 'Titre :',
+                'attr': {'class': 'mon-input'}
             }) }}
-        </div>
 
-        <div class="mb-3">
             {{ form_row(form.description, {
-                'label': 'Description',
-                'attr': {'class': 'form-control', 'rows': 4},
+                'label': 'Description :',
+                'attr': {'class': 'mon-input', 'rows': 4},
             }) }}
-        </div>
 
-        <div class="mb-3">
             {{ form_row(form.genre, {
-                'label': 'Choisissez un genre',
-                'attr': {'class': 'form-select'}
+                'label': 'Choisissez un genre :',
+                'attr': {'class': 'mon-input'}
             }) }}
-        </div>
 
-        <div class="mb-3">
             {{ form_row(form.dateDeSortie, {
-                'label': 'Date de sortie',
-                'attr': {'class': 'form-control'},
+                'label': 'Date de sortie :',
+                'attr': {'class': 'mon-input'},
             }) }}
-        </div>
 
-        <div class="mb-3">
             {{ form_row(form.duree, {
-                'label': 'Durée (en minutes)',
-                'attr': {'class': 'form-control'}
+                'label': 'Durée (en minutes) :',
+                'attr': {'class': 'mon-input'}
             }) }}
-        </div>
 
-        <div class="mb-3">
             {{ form_row(form.realisateurs, {
-                'label': 'Réalisateurs',
-                'attr': {'class': 'form-control'}
+                'label': 'Réalisateurs :',
+                'attr': {'class': 'mon-input'}
             }) }}
-        </div>
 
-        {# Champ pour uploader l’affiche #}
-        <div class="mb-3">
-            {{ form_row(form.affiche, { 'label': 'Affiche du film', 'attr': {'class': 'form-control'} }) }}
-        </div>
 
-        <div class="d-grid">
-            <button type="submit" class="btn btn-primary btn-lg">
-                 Ajouter le film
-            </button>
-        </div>
+            {{ form_row(form.affiche, {
+                'label': 'Affiche du film :', 'attr': {'class': 'file'}
+            }) }}
+
+
 
         {{ form_end(form) }}
 
+    <button type="submit" class="btn">
+        Ajouter le film
+    </button>
+    <a href="{{ path('app_profile') }}" class="btn">← Retour à la liste</a>
     </div>
 
-<a href="{{ path('app_profile') }}">← Retour à la liste</a>
 {% endblock %}

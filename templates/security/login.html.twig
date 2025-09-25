@@ -3,10 +3,11 @@
 {% endblock %}
 {% block stylesheets %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
 {% endblock %}
 
 {% block body %}
-    <form method="post" class="card shadow p-4" style="max-width: 500px; margin:3rem auto;">
+    <form method="post" class="contact-msg">
 
         {% if error %}
             <div class="alert alert-danger">
@@ -22,61 +23,56 @@
             </div>
         {% endif %}
 
-        <h2 class="mb-4 text-center text-primary"> Connexion</h2>
+        <h2 class="connect"> Connexion</h2>
 
-        <div class="mb-3">
-            <label for="inputEmail" class="form-label">Adresse email</label>
+            <label for="inputEmail">Adresse email</label>
             <input
                 type="email"
                 value="{{ last_username }}"
                 name="email"
                 id="inputEmail"
-                class="form-control"
+                class="mon-input"
                 autocomplete="email"
                 required
                 autofocus
             >
-        </div>
 
-        <div class="mb-3">
-            <label for="inputPassword" class="form-label">Mot de passe</label>
+            <label for="inputPassword">Mot de passe</label>
             <input
                 type="password"
                 name="password"
                 id="inputPassword"
-                class="form-control"
+                class="mon-input"
                 autocomplete="current-password"
                 required
             >
-        </div>
 
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-        <div class="form-check mb-3">
-            <input type="checkbox" name="_remember_me" class="form-check-input" id="rememberMe">
-            <label class="form-check-label" for="rememberMe">
-                Se souvenir de moi
-            </label>
-        </div>
+        <div class="basdeform">
+            <div>
+                <input type="checkbox" name="_remember_me"id="rememberMe">
+                <label class="form-check-label" for="rememberMe">
+                    Se souvenir de moi
+                </label>
+            </div>
 
-        <div class="d-grid">
-            <button class="btn btn-success btn-lg" type="submit">
+            <button class="btn" type="submit">
                  Se connecter
             </button>
-        </div>
 
-        <div class="text-center mt-4">
-            <p><a href="{{ path('app_forgot_password_request') }}" class="text-decoration-none">🔒 Mot de passe oublié ?</a></p>
+            <p><a class="connect" href="{{ path('app_forgot_password_request') }}" >Mot de passe oublié ?</a></p>
             <p>Pas encore inscrit(e) ?
-                <a href="{{ path('app_inscription') }}" class="text-decoration-none fw-bold text-primary">
+                <a class="connect" href="{{ path('app_inscription') }}" >
                     M'inscrire
                 </a>
             </p>
-            <a class="btn btn-outline-secondary btn-sm" href="{{ path('app_accueil') }}">
+            <a class="btn" href="{{ path('app_accueil') }}">
                 ← Retour à l'accueil
             </a>
         </div>
 
     </form>
+
 
 {% endblock %}

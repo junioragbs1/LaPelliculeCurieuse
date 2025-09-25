@@ -33,9 +33,10 @@
                 'placeholder': 'Maximum 200 caractères'}
         }) }}
 
-        <button class="btn">Envoyer</button>
         {{ form_end(form) }}
+        <button class="btn">Envoyer</button>
+
+        <a href="{{ path('app_profile') }}" class="btn">← Retour à la page d'accueil</a>
 
     </div>
-    <a href="{{ path('app_profile') }}" class="return">← Retour à la page d'accueil</a>
 {% endblock %}

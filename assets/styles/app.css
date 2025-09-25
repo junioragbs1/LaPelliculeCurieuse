@@ -20,6 +20,90 @@ img { /* largeur et hauteur de l'image en navbar */
     width: 100px;
     height: 100px;
 }
+/*========= PAGE CONNECT ET INSCRPTION ========*/
+.contact-msg , .formulaire{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto;
+    max-width: 700px;
+    padding: 1.3rem;
+    flex-direction: column;
+    color: black;
+    background-color: #EDE9FE;
+    border-radius: 1rem;
+}
+
+.connect{
+    color: #2c3e50;
+}
+.mon-input:focus{
+    outline: none;
+    border: 2px solid #1F1F3B;
+    box-shadow: 0 0 5px #1F1F3B;
+}
+a {
+    text-decoration: none;
+    color: #fff;
+}
+.basdeform{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.connect{
+    color: #2c3e50;
+    text-align: center;
+    margin: 1rem auto;
+}
+.file {
+    border: 2px dashed #cbd5e1;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    background: #f8fafc;
+    color: #2c3e50;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+
+}
+.formulaire label , .contact-msg label{
+    margin: 0;
+    align-items: center;
+}
+/* Survol */
+.file:hover {
+    border-color: #2c3e50;
+    color: #2c3e50;
+}
+
+.file::-webkit-file-upload-button {
+    visibility: visible;
+}
+.file::file-selector-button {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: none;
+    width: 250px;
+    margin: 0.5rem;
+    background-color: #2c3e50;
+    color: #FFFFFF;
+}
+@media(max-width:601px) {
+
+    .contact-msg , .formulaire{
+        max-width: 500px;
+    }
+    .infos{
+        width: 500px;
+        text-align: center;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}
 
 /* ========== FOOTER ========== */
 footer {
@@ -237,12 +321,12 @@ article {
     border-radius: 1rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     font-family: "Segoe UI", sans-serif;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
 }
 
-.infos h3 {
-    margin-bottom: 1rem;
-    color: #2c3e50;
-}
 
 .infos p {
     margin: 0.5rem 0;
@@ -268,20 +352,6 @@ article {
         width: 90%;
     }
 }
-
-.example-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2rem auto;
-    max-width: 700px;
-    padding: 2rem;
-    flex-direction: column;
-    color: #FFFFFF;
-    background-color: #EDE9FE;
-    border-radius: 1rem;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
 .example-wrapper p , title{
     margin: 2rem 1rem;
     color: black;
@@ -305,6 +375,7 @@ article {
     margin: 0.5rem;
     background-color: #2c3e50;
     color: #FFFFFF;
+    align-items: center;
 }
 .btn:hover{
     transform: scale(1.05);
@@ -326,12 +397,11 @@ article {
     color: #1F1F3B;
 }
 .btn-envoie , label{
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
+    padding: 0.5rem 0.5rem;
+    border-radius: 5px;
     border: none;
-    width: 250px;
-    max-width: 70%;
-    margin: 0 2rem;
+    width: 100%;
+    margin: 0.5rem;
 }
 .btn-envoie:hover{
     transform: scale(1.05);
@@ -339,16 +409,16 @@ article {
     color: white;
 }
 .container{
-    display: block;
+    display: flex;
     justify-content: center;
     align-items: center;
-    background-color: gainsboro;
-    padding: 2rem;
-    border: none;
-    border-radius: 0.5rem;
     margin: 1rem auto;
-    max-width: 70%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 550px;
+    padding: 1.3rem;
+    flex-direction: column;
+    color: black;
+    background-color: #EDE9FE;
+    border-radius: 1rem;
 }
 .container p , label{
     margin: 0.5rem 1rem;

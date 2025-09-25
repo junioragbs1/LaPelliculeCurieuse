@@ -20,13 +20,11 @@ class ContactMsgController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Debug : vérifier les données avant insertion
             dump($contactMessage);
 
             $dm->persist($contactMessage);
             $dm->flush();
 
-            $this->addFlash('success', 'Votre message a été envoyé avec succès.');
 
             return $this->redirectToRoute('app_contact_contact_index');
         }

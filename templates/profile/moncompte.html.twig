@@ -4,14 +4,13 @@
 {% block body %}
 
     <main>
-        <section class="infos">
+        <article class="infos">
             {% for user in users %}
                 {% if user.id == app.user.id %}
 {#                    je compare de l'id actuel a celui de l'utilisateur connecter, si c'est vrai. Il l'affiche#}
-                    <h3> Nom : {{ user.nom }}  </h3>
+                    <p> Nom : {{ user.nom }}  </p>
                     <p> Prénom : {{ user.prenom }}</p>
                     <p> Email : {{ user.email}}</p>
-                    <p> Date d'inscription : {{ user.dateinscription|date('d/m/Y')}}</p>
                 {% endif %}
             {% endfor %}
 
@@ -20,6 +19,6 @@
             <p><a href="{{ path('app_contact_contact_index') }}" class="btn-envoie">Nous envoyer un message ?</a></p>
 
                 <a class="btn-envoie" href="{{ path('app_profile') }}" > <- Retour en page d'accueil </a>
-        </section>
+        </article>
     </main>
 {% endblock %}

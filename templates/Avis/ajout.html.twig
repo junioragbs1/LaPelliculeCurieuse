@@ -6,8 +6,8 @@
 
 {% block body %}
 
-    <div class="example-wrapper">
-        <p> Choisissez un Film ou une Série :</p>
+    <div class="formulaire">
+        <h2 class="connect"> Choisissez un Film ou une Série :</h2>
 
         {{ form_start(form) }}
 
@@ -24,10 +24,10 @@
                 'attr': { 'class': 'mon-input' }
             }) }}
 
+        {{ form_end(form) }}
         <button type="submit" class="btn">Ajouter</button>
 
-        {{ form_end(form) }}
+        <a href="{{ path('app_profile') }}" class="btn">← Retour à la liste</a>
     </div>
 
-    <a href="{{ path('app_profile') }}" class="return">← Retour à la liste</a>
 {% endblock %}

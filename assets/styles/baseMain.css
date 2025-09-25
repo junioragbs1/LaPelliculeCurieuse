@@ -52,7 +52,14 @@ h2{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     height: 100vh;
 }
+@media(max-width:601px) {
+    .coverimg , .accueil{
+        display: none;
+    }
+    .contact-msg{
 
+    }
+}
 .item-card{
     display: flex;
     justify-content: center;
