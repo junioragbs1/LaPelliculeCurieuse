@@ -22,10 +22,6 @@
                             <a class="nav-link" href="{{ path('app_contacts') }}">Contact</a>
                         </li>
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type ="search" placeholder="Search" id="site-search" name="q" />
-                        <button class="btn btn-outline-success">Rechercher </button>
-                    </form>
                 </div>
             </div>
         </nav>
@@ -46,12 +42,11 @@
                             <img src="{{ asset('assets/images/logo.png') }}" alt="Inception">
                         </div>
                         <div class="item-infos">
-                            <h3 > Titre : {{ classique.nom }}</h3>
-                            <h4 > Réalisateur : {{ classique.realisateurs }}</h4>
-                            <p > Description : {{ classique.description }}</p>
-                            <p> Date de sortie : {{ classique.datedesortie|date('d/m/Y')}}</p>
-                            <p> Genre : {{ classique.genre}}</p>
-                            <p> Durée: {{ classique.duree}} min</p>
+                            <h3 > <strong>Titre :</strong> {{ classique.nom }}</h3>
+                            <h4 > <strong>Réalisateur :</strong> {{ classique.realisateurs }}</h4>
+                            <p > <strong>Description :</strong> {{ classique.description }}</p>
+                            <p> <strong>Date de sortie :</strong> {{ classique.datedesortie|date('d/m/Y')}}</p>
+                            <p> <strong>Genre :</strong> {{ classique.genre}}</p>
                         </div>
                     </div>
                 {% endfor %}

@@ -29,8 +29,8 @@ footer a {
     max-width: 900px;
     align-items: center;
     position: absolute;
-    top: 53%;
-    left: 20%;
+    top: 40%;
+    left: 19%;
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(5px);
     border-radius: 12px;
@@ -45,13 +45,10 @@ h2{
     color: #EDE9FE;
 }
 .coverimg{
-    width: 90%;
-    /*height: 500px;*/
+    width: 100%;
     background-image: url("/assets/images/couverture.png");
     background-size:contain;
     background-position: center;
-    margin: 1rem auto;
-    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     height: 100vh;
 }
@@ -88,4 +85,7 @@ h2{
 }
 .item-card img:hover{
     transform: scale(1.05);
+}
+.item-infos p{
+    font-size: 1.3em;
 }

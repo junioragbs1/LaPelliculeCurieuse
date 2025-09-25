@@ -5,6 +5,8 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     app.jwtsecret: '%env(JWT_SECRET)%'
+    env(MONGODB_URI): ''
+    env(MONGODB_DB): ''
     images_directory: '%kernel.project_dir%/public/uploads/images'
 #Il va aller chercher le dossier de mon projet
 services:

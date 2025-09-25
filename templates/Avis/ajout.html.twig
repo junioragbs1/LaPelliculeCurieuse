@@ -10,20 +10,24 @@
         <p> Choisissez un Film ou une Série :</p>
 
         {{ form_start(form) }}
-        <div class="input">
-            {{ form_row(form.note, { 'label': 'Votre note : ' }) }}
-        </div>
-        <div class="input">
-            {{ form_row(form.id_film, { 'label': 'Choisissez un film : ' }) }}
-        </div>
-        <div class="input">
-            {{ form_row(form.id_serie, { 'label': 'Choisissez une série : ' }) }}
-        </div>
 
-        <button type="submit">Ajouter</button>
+            {{ form_row(form.note, {
+                'label': 'Votre note :',
+                'attr': { 'class': 'mon-input' }
+            }) }}
+            {{ form_row(form.id_film, {
+                'label': 'Choisissez un film : ',
+                'attr': { 'class': 'mon-input' }
+            }) }}
+            {{ form_row(form.id_serie, {
+                'label': 'Choisissez une série : ',
+                'attr': { 'class': 'mon-input' }
+            }) }}
+
+        <button type="submit" class="btn">Ajouter</button>
 
         {{ form_end(form) }}
     </div>
 
-    <a href="{{ path('app_profile') }}">← Retour à la liste</a>
+    <a href="{{ path('app_profile') }}" class="return">← Retour à la liste</a>
 {% endblock %}

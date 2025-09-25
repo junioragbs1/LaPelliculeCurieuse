@@ -1,0 +1,41 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/contactMsg.css') }}">
+{% endblock %}
+
+{% block title %}<title> Envoyez nous un message </title>{% endblock %}
+
+{% block body %}
+    <div class="contact-msg">
+
+        <h1>Contactez-nous</h1>
+
+
+        {{ form_start(form) }}
+
+        {{ form_row(form.nom , {
+            'label' : 'Votre nom :',
+            'attr' : { 'class' : 'mon-input'}
+        }) }}
+
+        {{ form_row(form.email , {
+            'label' : 'Votre email :',
+            'attr' : { 'class' : 'mon-input'}
+        }) }}
+
+        {{ form_row(form.sujet , {
+            'label' : 'Votre sujet :',
+            'attr' : { 'class' : 'mon-input'}
+        }) }}
+
+        {{ form_row(form.message , {
+            'label' : 'Votre message :',
+            'attr' : { 'class' : 'mon-input-textera',
+                'placeholder': 'Maximum 200 caractères'}
+        }) }}
+
+        <button class="btn">Envoyer</button>
+        {{ form_end(form) }}
+
+    </div>
+    <a href="{{ path('app_profile') }}" class="return">← Retour à la page d'accueil</a>
+{% endblock %}

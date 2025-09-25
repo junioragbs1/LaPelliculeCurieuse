@@ -33,7 +33,7 @@ class AjoutSeriesFormType extends AbstractType
                     new NotBlank(),
                     new Length([
                         'min' => 3,
-                        'max' => 255,
+                        'max' => 210,
                         'minMessage' => 'Votre description doit comporter au moins {{ limit }} caractères.',
                         'maxMessage' => 'Votre desciption ne peut pas dépasser {{ limit }} caractères.',
                     ]),
